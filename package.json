@@ -1,0 +1,19 @@
+{
+  "name": "buryjs",
+  "version": "0.1.0",
+  "description": "bury.js",
+  "module": "index.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mtsgi@github.com/mtsgi/buryjs.git"
+  },
+  "keywords": [
+    "ruby"
+  ],
+  "author": "mtsgi",
+  "license": "MIT"
+}
