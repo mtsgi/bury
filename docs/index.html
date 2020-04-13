@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mtsgi/kitstrap/d/0.5/kitstrap.css">
     <title>Bury.js example</title>
     <style>
-        :root, input {
+        :root {
             font-family: 'Nunito Sans', sans-serif !important;
             font-weight: 200;
-            background-image: url("https://picsum.photos/1920/1080?random");
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            background-color: rgba(255,255,255,0.8);
-            background-blend-mode: lighten;
+            background: #ffffff;
+        }
+        input {
+            font-family: Consolas, Inconsolata, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace !important;
         }
         h1 {
             font-weight: 200;
@@ -36,7 +34,7 @@
         }
         section {
             opacity: .5;
-            transition: .5s all ease;
+            transition: .25s all ease;
             padding: 5px 0;
         }
         section:hover {
@@ -45,7 +43,7 @@
         }
     </style>
 </head>
-<body>
+<body spellcheck="false">
     <main class="m-r-l m-l-l">
         <h1 class="kit-text-c">Bury.js example</h1>
 
@@ -58,80 +56,80 @@
 
         <section>
             <h3>Array#first</h3>
-            <pre>[5, 4, 3, 2, 1].first<span class="kit-sub m-left"># => 5</span></pre>
+            <pre>[5, 4, 3, 2, 1].first<span class="kit-sub m-left">// => 5</span></pre>
         </section>
 
         <section>
             <h3>Array#last</h3>
-            <pre>['one', 'two', 'three'].last<span class="kit-sub m-left"># => 'three'</span></pre>
+            <pre>['one', 'two', 'three'].last<span class="kit-sub m-left">// => 'three'</span></pre>
         </section>
 
         <section>
             <h3>Array#min</h3>
-            <pre>[3, 8, 10.5, -5, 7].min<span class="kit-sub m-left"># => -5</span></pre>
+            <pre>[3, 8, 10.5, -5, 7].min<span class="kit-sub m-left">// => -5</span></pre>
         </section>
 
         <section>
             <h3>Array#max</h3>
-            <pre>[-196, -50.75, -Infinity, -600].max<span class="kit-sub m-left"># => -50.75</span></pre>
+            <pre>[-196, -50.75, -Infinity, -600].max<span class="kit-sub m-left">// => -50.75</span></pre>
         </section>
 
         <section>
             <h3>Array#sum</h3>
-            <pre>[10, 20, 30, 40].sum<span class="kit-sub m-left"># => 100</span></pre>
+            <pre>[10, 20, 30, 40].sum<span class="kit-sub m-left">// => 100</span></pre>
         </section>
 
         <section>
             <h3>Array#append</h3>
-            <pre>[1, 2, 3, 4].append(5)<span class="kit-sub m-left"># => [1, 2, 3, 4, 5]</span></pre>
-            <pre>[].append(1, 2, 3, 4, 5)<span class="kit-sub m-left"># => [1, 2, 3, 4, 5]</span></pre>
+            <pre>[1, 2, 3, 4].append(5)<span class="kit-sub m-left">// => [1, 2, 3, 4, 5]</span></pre>
+            <pre>[].append(1, 2, 3, 4, 5)<span class="kit-sub m-left">// => [1, 2, 3, 4, 5]</span></pre>
         </section>
 
         <section>
             <h3>Array#compact</h3>
-            <pre>[1, null, 2, '', undefined, 0, 3].compact<span class="kit-sub m-left"># => [1, 2, 3]</span></pre>
+            <pre>[1, null, 2, '', undefined, 0, 3].compact<span class="kit-sub m-left">// => [1, 2, 3]</span></pre>
         </section>
 
         <section>
             <h3>Array#uniq</h3>
-            <pre>[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].uniq<span class="kit-sub m-left"># => [3, 1, 4, 5, 9, 2, 6]</span></pre>
+            <pre>[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].uniq<span class="kit-sub m-left">// => [3, 1, 4, 5, 9, 2, 6]</span></pre>
         </section>
 
         <section>
             <h3>Example</h3>
-            <pre>[3, 3, 4, null].compact.uniq.sum<span class="kit-sub m-left"># => 7</span></pre>
+            <pre>[3, 3, 4, null].compact.uniq.sum<span class="kit-sub m-left">// => 7</span></pre>
         </section>
 
         <h2>String prototype</h2>
 
         <section>
             <h3>String#chop</h3>
-            <pre>'Hello'.chop.chop<span class="kit-sub m-left"># => 'Hel'</span></pre>
+            <pre>'Hello'.chop.chop<span class="kit-sub m-left">// => 'Hel'</span></pre>
         </section>
 
         <section>
             <h3>String#reverse</h3>
-            <pre>'Hello, world!'.reverse<span class="kit-sub m-left"># => '!dlrow ,olleH'</span></pre>
+            <pre>'Hello, world!'.reverse<span class="kit-sub m-left">// => '!dlrow ,olleH'</span></pre>
         </section>
 
         <section>
             <h3>String#downcase</h3>
-            <pre>'jAvaSCrIpT'.downcase<span class="kit-sub m-left"># => 'javascript'</span></pre>
+            <pre>'jAvaSCrIpT'.downcase<span class="kit-sub m-left">// => 'javascript'</span></pre>
         </section>
 
         <section>
             <h3>String#upcase</h3>
-            <pre>'jAvaSCrIpT'.upcase<span class="kit-sub m-left"># => 'JAVASCRIPT'</span></pre>
+            <pre>'jAvaSCrIpT'.upcase<span class="kit-sub m-left">// => 'JAVASCRIPT'</span></pre>
         </section>
 
         <section>
             <h3>String#strip</h3>
-            <pre>'  Hello        '.strip<span class="kit-sub m-left"># => 'Hello'</span></pre>
+            <pre>'  Hello        '.strip<span class="kit-sub m-left">// => 'Hello'</span></pre>
         </section>
 
         <section>
             <h3>Example</h3>
-            <pre>" Hello!".strip.upcase.chop.reverse<span class="kit-sub m-left"># => "OLLEH"</span></pre>
+            <pre>" Hello!".strip.upcase.chop.reverse<span class="kit-sub m-left">// => "OLLEH"</span></pre>
         </section>
 
         <footer class="p-l m-b-l kit-sub kit-text-c">
@@ -144,7 +142,7 @@
     Bury.init();
 
     document.querySelector('#go').addEventListener('click', () => {
-        alert( eval(document.querySelector('#try').value) );
+        alert(Function(`"use strict"; return(${document.querySelector('#try').value})`)());
     });
 </script>
 </html>
