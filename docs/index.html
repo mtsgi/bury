@@ -3,16 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mtsgi/kitstrap/d/0.5/kitstrap.css">
-    <title>Bury.js sample</title>
+    <title>Bury.js example</title>
+    <style>
+        :root, input {
+            font-family: 'Nunito Sans', sans-serif !important;
+            font-weight: 200;
+            background-image: url("https://picsum.photos/1920/1080?random");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(255,255,255,0.8);
+            background-blend-mode: lighten;
+        }
+        h1 {
+            font-weight: 200;
+            margin-bottom: 40px;
+            font-size: 72px;
+            border: none;
+        }
+        h2 {
+            font-size: 30px;
+        }
+        h3 {
+            font-weight: 200;
+            margin: 20px 0;
+            font-size: 30px;
+        }
+        pre, pre > .kit-sub {
+            font-size: 20px !important;
+        }
+        section {
+            opacity: .5;
+            transition: .5s all ease;
+            padding: 5px 0;
+        }
+        section:hover {
+            opacity: 1;
+            transition: none;
+        }
+    </style>
 </head>
 <body>
     <main class="m-r-l m-l-l">
-        <h1>Bury.js sample</h1>
+        <h1 class="kit-text-c">Bury.js example</h1>
+
+        <kit-formgroup class="m-t-l m-b-l">
+            <input type="text" name="" id="try" class="kit-textbox -flat kit-font-xl kit-width-75" value="[1, 1, null, 2].compact.uniq.sum">
+            <kit-button class="-flat kit-font-xl kit-width-25" id="go">Run</kit-button>
+        </kit-formgroup>
+
+        <h2>Array prototype</h2>
+
+        <section>
+            <h3>Array#first</h3>
+            <pre>[5, 4, 3, 2, 1].first<span class="kit-sub m-left"># => 5</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#last</h3>
+            <pre>['one', 'two', 'three'].last<span class="kit-sub m-left"># => 'three'</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#min</h3>
+            <pre>[3, 8, 10.5, -5, 7].min<span class="kit-sub m-left"># => -5</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#max</h3>
+            <pre>[-196, -50.75, -Infinity, -600].max<span class="kit-sub m-left"># => -50.75</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#sum</h3>
+            <pre>[10, 20, 30, 40].sum<span class="kit-sub m-left"># => 100</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#append</h3>
+            <pre>[1, 2, 3, 4].append(5)<span class="kit-sub m-left"># => [1, 2, 3, 4, 5]</span></pre>
+            <pre>[].append(1, 2, 3, 4, 5)<span class="kit-sub m-left"># => [1, 2, 3, 4, 5]</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#compact</h3>
+            <pre>[1, null, 2, '', undefined, 0, 3].compact<span class="kit-sub m-left"># => [1, 2, 3]</span></pre>
+        </section>
+
+        <section>
+            <h3>Array#uniq</h3>
+            <pre>[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].uniq<span class="kit-sub m-left"># => [3, 1, 4, 5, 9, 2, 6]</span></pre>
+        </section>
+
+        <section>
+            <h3>Example</h3>
+            <pre>[3, 3, 4, null].compact.uniq.sum<span class="kit-sub m-left"># => 7</span></pre>
+        </section>
+
+        <h2>String prototype</h2>
+
+        <section>
+            <h3>String#chop</h3>
+            <pre>'Hello'.chop.chop<span class="kit-sub m-left"># => 'Hel'</span></pre>
+        </section>
+
+        <section>
+            <h3>String#reverse</h3>
+            <pre>'Hello, world!'.reverse<span class="kit-sub m-left"># => '!dlrow ,olleH'</span></pre>
+        </section>
+
+        <section>
+            <h3>String#downcase</h3>
+            <pre>'jAvaSCrIpT'.downcase<span class="kit-sub m-left"># => 'javascript'</span></pre>
+        </section>
+
+        <section>
+            <h3>String#upcase</h3>
+            <pre>'jAvaSCrIpT'.upcase<span class="kit-sub m-left"># => 'JAVASCRIPT'</span></pre>
+        </section>
+
+        <section>
+            <h3>String#strip</h3>
+            <pre>'  Hello        '.strip<span class="kit-sub m-left"># => 'Hello'</span></pre>
+        </section>
+
+        <section>
+            <h3>Example</h3>
+            <pre>" Hello!".strip.upcase.chop.reverse<span class="kit-sub m-left"># => "OLLEH"</span></pre>
+        </section>
+
+        <footer class="p-l m-b-l kit-sub kit-text-c">
+            bury.js | ruby-like methods for javascript
+        </footer>
     </main>
 </body>
 <script type="module">
     import Bury from '../index.js';
     Bury.init();
+
+    document.querySelector('#go').addEventListener('click', () => {
+        alert( eval(document.querySelector('#try').value) );
+    });
 </script>
 </html>
