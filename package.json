@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://mtsgi@github.com/mtsgi/buryjs.git"
+    "url": "git+https://mtsgi@github.com/mtsgi/bury.git"
   },
   "keywords": [
     "ruby"
