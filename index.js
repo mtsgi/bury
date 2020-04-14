@@ -10,14 +10,21 @@ export default class Bury {
       sum () { return this.reduce((a, b) => a + b) },
       append (args) { this.push(...arguments); return this },
       compact () { return this.reduce((a, b) => (b ? a.append(b) : a), []) },
-      uniq () { return this.reduce((a, b) => (a.indexOf(b) === -1 ? a.append(b) : a), []) }
+      uniq () { return this.reduce((a, b) => (a.indexOf(b) === -1 ? a.append(b) : a), []) },
+      delete (target) { return this.reduce((a, b) => (b !== target ? a.append(b) : a), []) },
+      delete_at (pos) { this.splice(pos, 1); return this },
+      union (other) { return this.concat(other).uniq },
+      size () { return this.length }
     }
     const STRING_METHODS = {
       chop () { return this.slice(0, -1) },
       reverse () { return [...this].reverse().join('') },
       downcase () { return this.toLowerCase() },
       upcase () { return this.toUpperCase() },
-      strip () { return this.trim() }
+      strip () { return this.trim() },
+      gsub (pattern, replace) { return this.replace(pattern, replace) },
+      center (width) { return [' '.repeat(width), this, ' '.repeat(width)].join('') },
+      size () { return this.length }
     }
     const TARGETS = [
       [Array.prototype, ARRAY_METHODS],
