@@ -1,6 +1,6 @@
 {
   "name": "buryjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ruby-like methods for JavaScript.",
   "module": "index.js",
   "main": "index.js",
