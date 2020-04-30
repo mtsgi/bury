@@ -10,6 +10,9 @@ v0.1
 
 Bury.js extends the prototype of native js objects such as String and Array.
 
+- [View on GitHub](https://github.com/mtsgi/bury)
+- [View on npm](https://www.npmjs.com/package/buryjs)
+
 ## Example
 
 ```js
@@ -19,6 +22,12 @@ Bury.js extends the prototype of native js objects such as String and Array.
 
 ```js
 "Hello!".upcase.chop.reverse // => "OLLEH"
+"Bury.js".gsub(/\./, '').size // => 6
+```
+
+```js
+3.5.floor.next // => 4
+3..times(n => alert(n)) // => Try it out!
 ```
 
 [💡 View more example 💡](https://mtsgi.github.io/bury/docs)
