@@ -26,9 +26,23 @@ export default class Bury {
       center (width) { return [' '.repeat(width), this, ' '.repeat(width)].join('') },
       size () { return this.length }
     }
+    const NUMBER_METHODS = {
+      floor () { return Math.floor(this) },
+      ceil () { return Math.ceil(this) },
+      abs () { return Math.abs(this) },
+      next () { return Math.floor(this) + 1 },
+      succ () { return this.next },
+      pred () { return Math.ceil(this) - 1 },
+      next_float () { return this + Number.EPSILON },
+      prev_float () { return this - Number.EPSILON },
+      to_s () { return this.toString() },
+      inspect () { return this.to_s },
+      times (f) { for (const i of [...Array(this).keys()]) f.apply(window, [i]); return this }
+    }
     const TARGETS = [
       [Array.prototype, ARRAY_METHODS],
-      [String.prototype, STRING_METHODS]
+      [String.prototype, STRING_METHODS],
+      [Number.prototype, NUMBER_METHODS]
     ]
     for (const t of TARGETS) {
       for (const m in t[1]) {
