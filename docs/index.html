@@ -113,6 +113,32 @@
       </section>
 
       <section>
+        <h3>Array#count</h3>
+        <pre>[1, 2, 3, 4].count(x => x % 2 == 0)<span>// => 2</span></pre>
+      </section>
+
+      <section>
+        <h3>Array#minmax</h3>
+        <pre>[40, -Infinity, 3, 20].minmax<span>// => [-Infinity, 40]</span></pre>
+      </section>
+
+      <section>
+        <h3>Array#min_by</h3>
+        <pre>['Firefox', 'Chrome', 'Internet Explorer'].min_by(x => x.length)<span>// => 'Chrome'</span></pre>
+      </section>
+
+      <section>
+        <h3>Array#max_by</h3>
+        <pre>['Firefox', 'Chrome', 'Internet Explorer'].max_by(x => x.length)<span>// => 'Internet Explorer'</span></pre>
+      </section>
+
+      <section>
+        <h3>Array#find_all, select</h3>
+        <pre>[1, 2, 3, 4, 5, 6].find_all(x => x % 3 == 0)<span>// => [3, 6]</span></pre>
+        <pre>[null, 3, 0, '', undefined, 'Q'].select(x => !x)<span>// => [null, 0, '', undefined]</span></pre>
+      </section>
+
+      <section>
         <h3>Example</h3>
         <pre>[3, 3, 4, null].compact.uniq.sum<span>// => 7</span></pre>
       </section>
