@@ -14,7 +14,13 @@ export default class Bury {
       delete (target) { return this.reduce((a, b) => (b !== target ? a.append(b) : a), []) },
       delete_at (pos) { this.splice(pos, 1); return this },
       union (other) { return this.concat(other).uniq },
-      size () { return this.length }
+      size () { return this.length },
+      minmax () { return [this.min, this.max] },
+      min_by (f) { return this.reduce((a, b) => f(a) < f(b) ? a : b) },
+      max_by (f) { return this.reduce((a, b) => f(a) > f(b) ? a : b) },
+      find_all (f) { return this.filter(f) },
+      select (f) { return this.find_all(f) },
+      count (f) { return this.find_all(f).size }
     }
     const STRING_METHODS = {
       chop () { return this.slice(0, -1) },
