@@ -76,7 +76,10 @@
       </section>
 
       <section>
-        <h3>Array#append</h3>
+        <h3>
+          Array#append
+          <span class="kit-badge -crimson kit-font-s">Destructive</span>
+        </h3>
         <pre>[1, 2, 3, 4].append(5)<span>// => [1, 2, 3, 4, 5]</span></pre>
         <pre>[].append(1, 2, 3, 4, 5)<span>// => [1, 2, 3, 4, 5]</span></pre>
       </section>
@@ -92,13 +95,40 @@
       </section>
 
       <section>
+        <h3>Array#each</h3>
+        <pre>[4, 3, 2, 1].each(x => console.log(5-x))<div>// => 1
+//    2
+//    3
+//    4</div></pre>
+<pre>['a', 'b', 'c'].each(x => console.log(`_${x}_`))<div>// => '_a_'
+//    '_b_'
+//    '_c_'</div></pre>
+      </section>
+
+      <section>
+        <h3>Array#each_with_index</h3>
+        <pre>[1, 2, 3, 4].each_with_index((x, i) => console.log(x, i))<div>// => 1 0
+//    2 1
+//    3 2
+//    4 3</div></pre>
+      </section>
+
+      <section>
         <h3>Array#delete</h3>
         <pre>[1, 2, 1, 4, 1, 8].delete(1)<span>// => [2, 4, 8]</span></pre>
         <pre>[1, 2, 3, 4, 5].delete(3)<span>// => [1, 2, 4, 5]</span></pre>
       </section>
 
       <section>
-        <h3>Array#delete_at</h3>
+        <h3>Array#delete_if</h3>
+        <pre>[1, 2, 3, 4].delete_if(x => x % 2 == 0)<span>// => [1, 3]</span></pre>
+      </section>
+
+      <section>
+        <h3>
+          Array#delete_at
+          <span class="kit-badge -crimson kit-font-s">Destructive</span>
+        </h3>
         <pre>[1, 2, 3, 4, 5].delete_at(3)<span>// => [1, 2, 3, 5]</span></pre>
       </section>
 
