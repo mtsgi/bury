@@ -5,12 +5,13 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/buryjs?color=green)
 ![npm](https://img.shields.io/npm/dt/buryjs)
 
-v0.2
+`v0.2`
 
-> Ruby-like methods for JavaScript.
+_Ruby-like methods for JavaScript._
 
-Bury.js extends the prototype of native js objects such as String and Array.
+Bury.js extends the prototype of native JS objects such as String, Number and Array.
 
+- [💡 Examples](https://mtsgi.github.io/bury/docs)
 - [View on GitHub](https://github.com/mtsgi/bury)
 - [View on npm](https://www.npmjs.com/package/buryjs)
 
@@ -31,4 +32,8 @@ Bury.js extends the prototype of native js objects such as String and Array.
 3..times(n => alert(n)) // => Try it out!
 ```
 
-[💡 View more example 💡](https://mtsgi.github.io/bury/docs)
+**[💡 View more example 💡](https://mtsgi.github.io/bury/docs)**
+
+---
+
+> Note: All of Bury's destructive methods will be changed to non-destructive methods in a future version.
