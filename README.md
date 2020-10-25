@@ -5,7 +5,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/buryjs?color=green)
 ![npm](https://img.shields.io/npm/dt/buryjs)
 
-`v0.2`
+`v0.3`
 
 _Ruby-like methods for JavaScript._
 
@@ -37,11 +37,25 @@ Bury.js extends the prototype of native JS objects such as String, Number and Ar
 ## Getting Started
 
 ```sh
-npm
+npm i buryjs
+# or
+yarn add buryjs
 ```
 
 ```js
-Bury.init();
+import Bury from "buryjs";
+
+Bury.init(options);
+```
+
+The option object is set as follows by default:
+
+```js
+options = {
+  configurable: true,
+  enumerable: false,
+  writable: false
+}
 ```
 
 ---

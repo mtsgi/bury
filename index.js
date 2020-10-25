@@ -1,7 +1,5 @@
-/* eslint-disable no-extend-native */
-
 export default class Bury {
-  static init () {
+  static init (options = {}) {
     const TARGETS = [
       [Array.prototype, Bury.ARRAY_METHODS],
       [String.prototype, Bury.STRING_METHODS],
@@ -11,8 +9,10 @@ export default class Bury {
       for (const m in t[1]) {
         if (t[1][m].length === 0) {
           Object.defineProperty(t[0], m, {
-            enumerable: false,
             configurable: true,
+            enumerable: false,
+            writable: false,
+            ...options,
             get () { return t[1][m].apply(this) }
           })
         } else t[0][m] = t[1][m]
