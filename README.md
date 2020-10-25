@@ -34,6 +34,16 @@ Bury.js extends the prototype of native JS objects such as String, Number and Ar
 
 **[💡 View more example 💡](https://mtsgi.github.io/bury/docs)**
 
+## Getting Started
+
+```sh
+npm
+```
+
+```js
+Bury.init();
+```
+
 ---
 
 > Note: All of Bury's destructive methods will be changed to non-destructive methods in a future version.
