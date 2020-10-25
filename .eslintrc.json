@@ -8,5 +8,9 @@
     "import"
   ],
   "parser": "babel-eslint",
-  "extends": "standard"
+  "extends": "standard",
+  "rules": {
+    "semi": "error",
+    "no-extend-native": "off"
+  }
 }
