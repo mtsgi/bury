@@ -300,7 +300,7 @@
 <script type="module">
   import Bury from '../index.js';
   import Kaf from 'https://cdn.jsdelivr.net/gh/mtsgi/kafjs@0.1.1/kaf.js';
-  Bury.init();
+  Bury.init({ configurable: true, enumerable: false });
   const kaf = new Kaf({
     elem: 'main',
     data: {

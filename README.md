@@ -53,8 +53,7 @@ The option object is set as follows by default:
 ```js
 options = {
   configurable: true,
-  enumerable: false,
-  writable: false
+  enumerable: false
 }
 ```
 
