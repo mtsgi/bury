@@ -11,7 +11,6 @@ export default class Bury {
           Object.defineProperty(t[0], m, {
             configurable: true,
             enumerable: false,
-            writable: false,
             ...options,
             get () { return t[1][m].apply(this) }
           })
