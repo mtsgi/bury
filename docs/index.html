@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mtsgi/kitstrap/d/0.5/kitstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mtsgi/kitstrap/d/0.6/kitstrap.css">
   <title>Bury.js example</title>
   <style>
     :root {
@@ -133,6 +133,13 @@
       </section>
 
       <section>
+        <h3>
+          Array#clear
+        </h3>
+        <pre>[10, 20, 30].clear<span>// => []</span></pre>
+      </section>
+
+      <section>
         <h3>Array#union</h3>
         <pre>[1, 2, 3, 4].union([3, 4, 5, 6])<span>// => [1, 2, 3, 4, 5, 6]</span></pre>
       </section>
@@ -211,6 +218,11 @@
       <section>
         <h3>String#gsub</h3>
         <pre>'Hello, world!'.gsub(/.*,/, 'The')<span>// => 'The world!'</span></pre>
+      </section>
+
+      <section>
+        <h3>String#prepend</h3>
+        <pre>'World'.prepend('Hello, ')<span>// => 'Hello, World'</span></pre>
       </section>
 
       <section>
