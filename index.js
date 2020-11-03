@@ -33,6 +33,7 @@ export default class Bury {
     delete (target) { return this.reduce((a, b) => (b !== target ? a.append(b) : a), []) },
     delete_if (f) { return this.reduce((a, b) => (f(b) ? a : a.append(b)), []) },
     delete_at (pos) { this.splice(pos, 1); return this },
+    clear () { return [] },
     union (other) { return this.concat(other).uniq },
     size () { return this.length },
     minmax () { return [this.min, this.max] },
@@ -51,6 +52,7 @@ export default class Bury {
     strip () { return this.trim() },
     gsub (pattern, replace) { return this.replace(pattern, replace) },
     center (width) { return [' '.repeat(width), this, ' '.repeat(width)].join('') },
+    prepend (str) { return [str, this].join('') },
     size () { return this.length }
   }
 
