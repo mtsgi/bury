@@ -1,11 +1,12 @@
 # Bury.js
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
 ![npm](https://img.shields.io/npm/v/buryjs?style=flat)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/buryjs?color=green)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+![code size](https://img.shields.io/github/languages/code-size/mtsgi/bury)
 ![npm](https://img.shields.io/npm/dt/buryjs)
 
-`v0.3`
+`v0.4`
 
 _Ruby-like methods for JavaScript._
 
