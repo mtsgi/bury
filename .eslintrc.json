@@ -10,7 +10,7 @@
   "parser": "babel-eslint",
   "extends": "standard",
   "rules": {
-    "semi": "error",
+    "semi": "warn",
     "no-extend-native": "off"
   }
 }
