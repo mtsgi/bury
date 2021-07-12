@@ -25,7 +25,7 @@ export default class Bury {
       last () { return this[this.length - 1] },
       min () { return this.reduce((a, b) => Math.min(a, b)) },
       max () { return this.reduce((a, b) => Math.max(a, b)) },
-      sum () { return this.reduce((a, b) => a + b) },
+      sum () { return this.reduce((a, b) => Number(a) + Number(b)) },
       append (dumArg) { this.push(...arguments); return this },
       prepend (dumArg) { return [...arguments, ...this] },
       unshift (dumArg) { return this.prepend(...arguments) },
