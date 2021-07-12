@@ -5,7 +5,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 ![code size](https://img.shields.io/github/languages/code-size/mtsgi/bury)
 ![npm](https://img.shields.io/npm/dt/buryjs)
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/organization/repository)
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/mtsgi/bury)
 
 `v0.5`
 
