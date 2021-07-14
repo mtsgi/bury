@@ -44,7 +44,8 @@ export default class Bury {
       max_by (f) { return this.reduce((a, b) => f(a) > f(b) ? a : b) },
       find_all (f) { return this.filter(f) },
       select (f) { return this.find_all(f) },
-      count (f) { return this.find_all(f).size }
+      count (f) { return this.find_all(f).size },
+      rev () { return [...this].reverse() }
     }
   }
 
