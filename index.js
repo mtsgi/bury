@@ -75,7 +75,8 @@ export default class Bury {
       prev_float () { return this - Number.EPSILON },
       to_s () { return this.toString() },
       inspect () { return this.to_s },
-      times (f) { for (const i of [...Array(this).keys()]) f.apply(window, [i]); return this }
+      times (f) { for (const i of [...Array(this).keys()]) f.apply(window, [i]); return this },
+      clamp (min, max) { return Math.min(Math.max(this, min), max) }
     }
   }
 }
