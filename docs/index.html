@@ -1,388 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/mtsgi/kitstrap/d/0.6/kitstrap.css"
+    />
+    <title>Bury.js example</title>
+    <style>
+      :root {
+        font-family: 'Nunito Sans', sans-serif !important;
+        font-weight: 200;
+        background: #ffffff;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mtsgi/kitstrap/d/0.6/kitstrap.css">
-  <title>Bury.js example</title>
-  <style>
-    :root {
-      font-family: 'Nunito Sans', sans-serif !important;
-      font-weight: 200;
-      background: #ffffff;
-    }
+      input {
+        font-family: Consolas, Inconsolata, Menlo, 'DejaVu Sans Mono',
+          'Bitstream Vera Sans Mono', 'Courier New', monospace !important;
+      }
 
-    input {
-      font-family: Consolas, Inconsolata, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace !important;
-    }
+      section {
+        opacity: 0.5;
+        transition: 0.25s all ease;
+        padding: 8px 12px;
+      }
 
-    section {
-      opacity: .5;
-      transition: .25s all ease;
-      padding: 8px 12px;
-    }
+      section:hover {
+        opacity: 1;
+        transition: none;
+      }
+    </style>
+  </head>
 
-    section:hover {
-      opacity: 1;
-      transition: none;
-    }
-  </style>
-</head>
+  <body spellcheck="false">
+    <main>
+      <h1 class="kit-text-c">Bury.js example</h1>
 
-<body spellcheck="false">
-  <main>
-    <h1 class="kit-text-c">Bury.js example</h1>
+      <kit-formgroup>
+        <input
+          type="text"
+          kit:bind="try"
+          class="kit-textbox -flat kit-font-xl kit-width-75"
+          value="[1, 1, null, 2].compact.uniq.sum"
+        />
+        <kit-button class="-flat kit-font-xl kit-width-25" kit-e="go"
+          >Run</kit-button
+        >
+      </kit-formgroup>
 
-    <kit-formgroup>
-      <input type="text" kit:bind="try" class="kit-textbox -flat kit-font-xl kit-width-75"
-        value="[1, 1, null, 2].compact.uniq.sum">
-      <kit-button class="-flat kit-font-xl kit-width-25" kit-e="go">Run</kit-button>
-    </kit-formgroup>
+      <div kit:if="tab == 'array'">
+        <div>
+          <a class="tab active">Array</a>
+          <a class="tab" kit:assign="tab 'string'">String</a>
+          <a class="tab" kit:assign="tab 'number'">Number</a>
+        </div>
 
-    <div kit:if="tab == 'array'">
-      <div>
-        <a class="tab active">Array</a>
-        <a class="tab" kit:assign="tab 'string'">String</a>
-        <a class="tab" kit:assign="tab 'number'">Number</a>
-      </div>
+        <h2>Array prototype</h2>
 
-      <h2>Array prototype</h2>
+        <section>
+          <h3>Array#first</h3>
+          <pre>[5, 4, 3, 2, 1].first<span>// => 5</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#first</h3>
-        <pre>[5, 4, 3, 2, 1].first<span>// => 5</span></pre>
-      </section>
+        <section>
+          <h3>Array#last</h3>
+          <pre>['one', 'two', 'three'].last<span>// => 'three'</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#last</h3>
-        <pre>['one', 'two', 'three'].last<span>// => 'three'</span></pre>
-      </section>
+        <section>
+          <h3>Array#min</h3>
+          <pre>[3, 8, 10.5, -5, 7].min<span>// => -5</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#min</h3>
-        <pre>[3, 8, 10.5, -5, 7].min<span>// => -5</span></pre>
-      </section>
+        <section>
+          <h3>Array#max</h3>
+          <pre>[-196, -50.75, -Infinity, -600].max<span>// => -50.75</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#max</h3>
-        <pre>[-196, -50.75, -Infinity, -600].max<span>// => -50.75</span></pre>
-      </section>
+        <section>
+          <h3>Array#sum</h3>
+          <pre>[10, 20, 30, 40].sum<span>// => 100</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#sum</h3>
-        <pre>[10, 20, 30, 40].sum<span>// => 100</span></pre>
-      </section>
+        <section>
+          <h3>
+            Array#append
+            <span class="kit-badge -crimson kit-font-s">Destructive</span>
+          </h3>
+          <pre>[1, 2, 3, 4].append(5)<span>// => [1, 2, 3, 4, 5]</span></pre>
+          <pre>[].append(1, 2, 3, 4, 5)<span>// => [1, 2, 3, 4, 5]</span></pre>
+        </section>
 
-      <section>
-        <h3>
-          Array#append
-          <span class="kit-badge -crimson kit-font-s">Destructive</span>
-        </h3>
-        <pre>[1, 2, 3, 4].append(5)<span>// => [1, 2, 3, 4, 5]</span></pre>
-        <pre>[].append(1, 2, 3, 4, 5)<span>// => [1, 2, 3, 4, 5]</span></pre>
-      </section>
+        <section>
+          <h3>Array#prepend, unshift</h3>
+          <pre>[true, true].prepend(false)<span>// => [false, true, true]</span></pre>
+          <pre>[3, 4, 5].unshift(1, 2)<span>// => [1, 2, 3, 4, 5]</span></pre>
+        </section>
 
-      <section>
-        <h3>
-          Array#prepend, unshift
-        </h3>
-        <pre>[true, true].prepend(false)<span>// => [false, true, true]</span></pre>
-        <pre>[3, 4, 5].unshift(1, 2)<span>// => [1, 2, 3, 4, 5]</span></pre>
-      </section>
+        <section>
+          <h3>Array#compact</h3>
+          <pre>[1, null, 2, '', undefined, 0, 3].compact<span>// => [1, 2, 3]</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#compact</h3>
-        <pre>[1, null, 2, '', undefined, 0, 3].compact<span>// => [1, 2, 3]</span></pre>
-      </section>
+        <section>
+          <h3>Array#uniq</h3>
+          <pre>[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].uniq<span>// => [3, 1, 4, 5, 9, 2, 6]</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#uniq</h3>
-        <pre>[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5].uniq<span>// => [3, 1, 4, 5, 9, 2, 6]</span></pre>
-      </section>
-
-      <section>
-        <h3>Array#each</h3>
-        <pre>[4, 3, 2, 1].each(x => console.log(5-x))<div>// => 1
+        <section>
+          <h3>Array#each</h3>
+          <pre>[4, 3, 2, 1].each(x => console.log(5-x))<div>// => 1
 //    2
 //    3
 //    4</div></pre>
-<pre>['a', 'b', 'c'].each(x => console.log(`_${x}_`))<div>// => '_a_'
+          <pre>['a', 'b', 'c'].each(x => console.log(`_${x}_`))<div>// => '_a_'
 //    '_b_'
 //    '_c_'</div></pre>
-      </section>
+        </section>
 
-      <section>
-        <h3>Array#each_with_index</h3>
-        <pre>[1, 2, 3, 4].each_with_index((x, i) => console.log(x, i))<div>// => 1 0
+        <section>
+          <h3>Array#each_with_index</h3>
+          <pre>[1, 2, 3, 4].each_with_index((x, i) => console.log(x, i))<div>// => 1 0
 //    2 1
 //    3 2
 //    4 3</div></pre>
-      </section>
+        </section>
 
-      <section>
-        <h3>Array#delete</h3>
-        <pre>[1, 2, 1, 4, 1, 8].delete(1)<span>// => [2, 4, 8]</span></pre>
-        <pre>[1, 2, 3, 4, 5].delete(3)<span>// => [1, 2, 4, 5]</span></pre>
-      </section>
+        <section>
+          <h3>Array#delete</h3>
+          <pre>[1, 2, 1, 4, 1, 8].delete(1)<span>// => [2, 4, 8]</span></pre>
+          <pre>[1, 2, 3, 4, 5].delete(3)<span>// => [1, 2, 4, 5]</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#delete_if</h3>
-        <pre>[1, 2, 3, 4].delete_if(x => x % 2 == 0)<span>// => [1, 3]</span></pre>
-      </section>
+        <section>
+          <h3>Array#delete_if</h3>
+          <pre>[1, 2, 3, 4].delete_if(x => x % 2 == 0)<span>// => [1, 3]</span></pre>
+        </section>
 
-      <section>
-        <h3>
-          Array#delete_at
-          <span class="kit-badge -crimson kit-font-s">Destructive</span>
-        </h3>
-        <pre>[1, 2, 3, 4, 5].delete_at(3)<span>// => [1, 2, 3, 5]</span></pre>
-      </section>
+        <section>
+          <h3>
+            Array#delete_at
+            <span class="kit-badge -crimson kit-font-s">Destructive</span>
+          </h3>
+          <pre>[1, 2, 3, 4, 5].delete_at(3)<span>// => [1, 2, 3, 5]</span></pre>
+        </section>
 
-      <section>
-        <h3>
-          Array#clear
-        </h3>
-        <pre>[10, 20, 30].clear<span>// => []</span></pre>
-      </section>
+        <section>
+          <h3>Array#clear</h3>
+          <pre>[10, 20, 30].clear<span>// => []</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#union</h3>
-        <pre>[1, 2, 3, 4].union([3, 4, 5, 6])<span>// => [1, 2, 3, 4, 5, 6]</span></pre>
-      </section>
+        <section>
+          <h3>Array#union</h3>
+          <pre>[1, 2, 3, 4].union([3, 4, 5, 6])<span>// => [1, 2, 3, 4, 5, 6]</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#size</h3>
-        <pre>['A', 'B', 'C'].size<span>// => 3</span></pre>
-      </section>
+        <section>
+          <h3>Array#size</h3>
+          <pre>['A', 'B', 'C'].size<span>// => 3</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#count</h3>
-        <pre>[1, 2, 3, 4].count(x => x % 2 == 0)<span>// => 2</span></pre>
-      </section>
+        <section>
+          <h3>Array#count</h3>
+          <pre>[1, 2, 3, 4].count(x => x % 2 == 0)<span>// => 2</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#minmax</h3>
-        <pre>[40, -Infinity, 3, 20].minmax<span>// => [-Infinity, 40]</span></pre>
-      </section>
+        <section>
+          <h3>Array#minmax</h3>
+          <pre>[40, -Infinity, 3, 20].minmax<span>// => [-Infinity, 40]</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#min_by</h3>
-        <pre>['Firefox', 'Chrome', 'Internet Explorer'].min_by(x => x.length)<span>// => 'Chrome'</span></pre>
-      </section>
+        <section>
+          <h3>Array#min_by</h3>
+          <pre>['Firefox', 'Chrome', 'Internet Explorer'].min_by(x => x.length)<span>// => 'Chrome'</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#max_by</h3>
-        <pre>['Firefox', 'Chrome', 'Internet Explorer'].max_by(x => x.length)<span>// => 'Internet Explorer'</span></pre>
-      </section>
+        <section>
+          <h3>Array#max_by</h3>
+          <pre>['Firefox', 'Chrome', 'Internet Explorer'].max_by(x => x.length)<span>// => 'Internet Explorer'</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#find_all, select</h3>
-        <pre>[1, 2, 3, 4, 5, 6].find_all(x => x % 3 == 0)<span>// => [3, 6]</span></pre>
-        <pre>[null, 3, 0, '', undefined, 'Q'].select(x => !x)<span>// => [null, 0, '', undefined]</span></pre>
-      </section>
+        <section>
+          <h3>Array#find_all, select</h3>
+          <pre>[1, 2, 3, 4, 5, 6].find_all(x => x % 3 == 0)<span>// => [3, 6]</span></pre>
+          <pre>[null, 3, 0, '', undefined, 'Q'].select(x => !x)<span>// => [null, 0, '', undefined]</span></pre>
+        </section>
 
-      <section>
-        <h3>Array#rev</h3>
-        <pre>[1, 2, 3, 4].rev<span>// => [4, 3, 2, 1]</span></pre>
-      </section>
+        <section>
+          <h3>Array#rev</h3>
+          <pre>[1, 2, 3, 4].rev<span>// => [4, 3, 2, 1]</span></pre>
+        </section>
 
-      <section>
-        <h3>Example</h3>
-        <pre>[3, 3, 4, null].compact.uniq.sum<span>// => 7</span></pre>
-      </section>
-    </div>
-
-    <div kit:if="tab == 'string'">
-      <div>
-        <a class="tab" kit:assign="tab 'array'">Array</a>
-        <a class="tab active">String</a>
-        <a class="tab" kit:assign="tab 'number'">Number</a>
+        <section>
+          <h3>Example</h3>
+          <pre>[3, 3, 4, null].compact.uniq.sum<span>// => 7</span></pre>
+        </section>
       </div>
 
-      <h2>String prototype</h2>
+      <div kit:if="tab == 'string'">
+        <div>
+          <a class="tab" kit:assign="tab 'array'">Array</a>
+          <a class="tab active">String</a>
+          <a class="tab" kit:assign="tab 'number'">Number</a>
+        </div>
 
-      <section>
-        <h3>String#chop</h3>
-        <pre>'Hello'.chop.chop<span>// => 'Hel'</span></pre>
-      </section>
+        <h2>String prototype</h2>
 
-      <section>
-        <h3>String#reverse</h3>
-        <pre>'Hello, world!'.reverse<span>// => '!dlrow ,olleH'</span></pre>
-      </section>
+        <section>
+          <h3>String#chop</h3>
+          <pre>'Hello'.chop.chop<span>// => 'Hel'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#downcase</h3>
-        <pre>'jAvaSCrIpT'.downcase<span>// => 'javascript'</span></pre>
-      </section>
+        <section>
+          <h3>String#reverse</h3>
+          <pre>'Hello, world!'.reverse<span>// => '!dlrow ,olleH'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#upcase</h3>
-        <pre>'jAvaSCrIpT'.upcase<span>// => 'JAVASCRIPT'</span></pre>
-      </section>
+        <section>
+          <h3>String#downcase</h3>
+          <pre>'jAvaSCrIpT'.downcase<span>// => 'javascript'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#strip</h3>
-        <pre>'  Hello        '.strip<span>// => 'Hello'</span></pre>
-      </section>
+        <section>
+          <h3>String#upcase</h3>
+          <pre>'jAvaSCrIpT'.upcase<span>// => 'JAVASCRIPT'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#gsub</h3>
-        <pre>'Hello, world!'.gsub(/.*,/, 'The')<span>// => 'The world!'</span></pre>
-      </section>
+        <section>
+          <h3>String#strip</h3>
+          <pre>'  Hello        '.strip<span>// => 'Hello'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#prepend</h3>
-        <pre>'World'.prepend('Hello, ')<span>// => 'Hello, World'</span></pre>
-      </section>
+        <section>
+          <h3>String#gsub</h3>
+          <pre>'Hello, world!'.gsub(/.*,/, 'The')<span>// => 'The world!'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#center</h3>
-        <pre>'JavaScript'.center(4)<span>// => '    JavaScript    '</span></pre>
-      </section>
+        <section>
+          <h3>String#prepend</h3>
+          <pre>'World'.prepend('Hello, ')<span>// => 'Hello, World'</span></pre>
+        </section>
 
-      <section>
-        <h3>String#size</h3>
-        <pre>'Hello, world!'.size<span>// => 13</span></pre>
-      </section>
+        <section>
+          <h3>String#center</h3>
+          <pre>'JavaScript'.center(4)<span>// => '    JavaScript    '</span></pre>
+        </section>
 
-      <section>
-        <h3>Example</h3>
-        <pre>' Hello!'.strip.upcase.chop.reverse<span>// => 'OLLEH'</span></pre>
-      </section>
-    </div>
+        <section>
+          <h3>String#size</h3>
+          <pre>'Hello, world!'.size<span>// => 13</span></pre>
+        </section>
 
-    
-    <div kit:if="tab == 'number'">
-      <div>
-        <a class="tab" kit:assign="tab 'array'">Array</a>
-        <a class="tab" kit:assign="tab 'string'">String</a>
-        <a class="tab active">Number</a>
+        <section>
+          <h3>Example</h3>
+          <pre>' Hello!'.strip.upcase.chop.reverse<span>// => 'OLLEH'</span></pre>
+        </section>
       </div>
-      
-      <h2>Number prototype</h2>
 
-      <section>
-        <h3>Number#floor</h3>
-        <pre>3.6.floor<span>// => 3</span></pre>
-      </section>
+      <div kit:if="tab == 'number'">
+        <div>
+          <a class="tab" kit:assign="tab 'array'">Array</a>
+          <a class="tab" kit:assign="tab 'string'">String</a>
+          <a class="tab active">Number</a>
+        </div>
 
-      <section>
-        <h3>Number#ceil</h3>
-        <pre>.2.ceil<span>// => 1</span></pre>
-      </section>
+        <h2>Number prototype</h2>
 
-      <section>
-        <h3>Number#abs</h3>
-        <pre>(-Infinity).abs<span>// => Infinity</span></pre>
-        <pre>10..abs<span>// => 10</span></pre>
-      </section>
+        <section>
+          <h3>Number#floor</h3>
+          <pre>3.6.floor<span>// => 3</span></pre>
+        </section>
 
-      <section>
-        <h3>Number#next, succ</h3>
-        <pre>7..next.next.next<span>// => 10</span></pre>
-        <pre>Infinity.succ<span>// => Infinity</span></pre>
-      </section>
+        <section>
+          <h3>Number#ceil</h3>
+          <pre>.2.ceil<span>// => 1</span></pre>
+        </section>
 
-      <section>
-        <h3>Number#pred</h3>
-        <pre>(-5).pred.pred<span>// => -7</span></pre>
-        <pre>NaN.pred<span>// => NaN</span></pre>
-      </section>
+        <section>
+          <h3>Number#abs</h3>
+          <pre>(-Infinity).abs<span>// => Infinity</span></pre>
+          <pre>10..abs<span>// => 10</span></pre>
+        </section>
 
-      <section>
-        <h3>Number#next_float</h3>
-        <pre>1..next_float<span>// => 1.0000000000000002</span></pre>
-      </section>
+        <section>
+          <h3>Number#next, succ</h3>
+          <pre>7..next.next.next<span>// => 10</span></pre>
+          <pre>Infinity.succ<span>// => Infinity</span></pre>
+        </section>
 
-      <section>
-        <h3>Number#prev_float</h3>
-        <pre>0.01.prev_float<span>// => 0.009999999999999778</span></pre>
-      </section>
+        <section>
+          <h3>Number#pred</h3>
+          <pre>(-5).pred.pred<span>// => -7</span></pre>
+          <pre>NaN.pred<span>// => NaN</span></pre>
+        </section>
 
-      <section>
-        <h3>Number#to_s, inspect</h3>
-        <pre>.7.to_s<span>// => '0.7'</span></pre>
-        <pre>(5/2).inspect<span>// => '2.5'</span></pre>
-      </section>
+        <section>
+          <h3>Number#next_float</h3>
+          <pre>1..next_float<span>// => 1.0000000000000002</span></pre>
+        </section>
 
-      <section>
-        <h3>Number#times</h3>
-        <pre>4..times(n => console.log(n*2))<div>// => 0
+        <section>
+          <h3>Number#prev_float</h3>
+          <pre>0.01.prev_float<span>// => 0.009999999999999778</span></pre>
+        </section>
+
+        <section>
+          <h3>Number#to_s, inspect</h3>
+          <pre>.7.to_s<span>// => '0.7'</span></pre>
+          <pre>(5/2).inspect<span>// => '2.5'</span></pre>
+        </section>
+
+        <section>
+          <h3>Number#times</h3>
+          <pre>4..times(n => console.log(n*2))<div>// => 0
 //    2
 //    4
 //    6</div></pre>
-      </section>
+        </section>
 
-      <section>
-        <h3>Number#clamp</h3>
-        <pre>32..clamp(-32, 64)<span>// => 32</span></pre>
-        <pre>256..clamp(-32, 64)<span>// => 64</span></pre>
-        <pre>(-128).clamp(-32, 64)<span>// => -32</span></pre>
-      </section>
-    </div>
+        <section>
+          <h3>Number#clamp</h3>
+          <pre>32..clamp(-32, 64)<span>// => 32</span></pre>
+          <pre>256..clamp(-32, 64)<span>// => 64</span></pre>
+          <pre>(-128).clamp(-32, 64)<span>// => -32</span></pre>
+        </section>
+      </div>
 
-    <footer class="p-l m-b-l kit-sub kit-text-c">
-      bury.js | ruby-like methods for javascript
-    </footer>
-  </main>
-</body>
-<script type="module">
-  import Bury from '../index.js';
-  import Kaf from 'https://cdn.jsdelivr.net/gh/mtsgi/kafjs@0.1.1/kaf.js';
-  Bury.init({ configurable: true, enumerable: false });
-  const kaf = new Kaf({
-    elem: 'main',
-    data: {
-      tab: 'array'
-    },
-    events: {
-      go() {
-        alert(Kaf.eval(this.try));
-      }
-    },
-    styles: {
-      'h1': {
-        fontWeight: '200',
-        fontSize: '72px',
-        marginBottom: '40px',
-        border: 'none'
+      <footer class="p-l m-b-l kit-sub kit-text-c">
+        bury.js | ruby-like methods for javascript
+      </footer>
+    </main>
+  </body>
+  <script type="module">
+    import Bury from '../index.js';
+    import Kaf from 'https://cdn.jsdelivr.net/gh/mtsgi/kafjs@0.1.1/kaf.js';
+    Bury.init({
+      configurable: true,
+      enumerable: false
+    });
+    const kaf = new Kaf({
+      elem: 'main',
+      data: {
+        tab: 'array'
       },
-      'h2': {
-        textAlign: 'center',
-        fontSize: '48px',
-        fontWeight: '200',
-        margin: '40px 0'
-      },
-      'h3': {
-        fontSize: '32px',
-        margin: '0'
-      },
-      'kit-formgroup': {
-        margin: '0 16px',
-        marginBottom: '40px'
-      },
-      '.tab': {
-        fontSize: '24px',
-        padding: '10px',
-        cursor: 'pointer',
-        borderBottom: '2px solid #eeeeee',
-        '&.active': {
-          background: '#eeeeee',
-          borderBottom: '2px solid dodgerblue'
+      events: {
+        go() {
+          alert(Kaf.eval(this.try));
         }
       },
-      'pre': {
-        fontSize: '20px',
-        'span': {
-          color: '#999',
-          marginLeft: '1em'
+      styles: {
+        h1: {
+          fontWeight: '200',
+          fontSize: '72px',
+          marginBottom: '40px',
+          border: 'none'
+        },
+        h2: {
+          textAlign: 'center',
+          fontSize: '48px',
+          fontWeight: '200',
+          margin: '40px 0'
+        },
+        h3: {
+          fontSize: '32px',
+          margin: '0'
+        },
+        'kit-formgroup': {
+          margin: '0 16px',
+          marginBottom: '40px'
+        },
+        '.tab': {
+          fontSize: '24px',
+          padding: '10px',
+          cursor: 'pointer',
+          borderBottom: '2px solid #eeeeee',
+          '&.active': {
+            background: '#eeeeee',
+            borderBottom: '2px solid dodgerblue'
+          }
+        },
+        pre: {
+          fontSize: '20px',
+          span: {
+            color: '#999',
+            marginLeft: '1em'
+          }
         }
       }
-    }
-  });
-</script>
-
+    });
+  </script>
 </html>

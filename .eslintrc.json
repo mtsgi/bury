@@ -4,13 +4,11 @@
     "browser": false,
     "jquery": false
   },
-  "plugins": [
-    "import"
-  ],
+  "plugins": ["import"],
   "parser": "babel-eslint",
-  "extends": "standard",
+  "extends": ["standard", "prettier"],
   "rules": {
-    "semi": "warn",
+    "semi": "off",
     "no-extend-native": "off"
   }
 }

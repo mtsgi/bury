@@ -1,13 +1,12 @@
 # Bury.js
 
-
 ![npm](https://img.shields.io/npm/v/buryjs?style=flat)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 ![code size](https://img.shields.io/github/languages/code-size/mtsgi/bury)
 ![npm](https://img.shields.io/npm/dt/buryjs)
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/mtsgi/bury)
 
-`v0.5`
+`v0.6`
 
 _Ruby-like methods for JavaScript._
 
@@ -45,18 +44,26 @@ yarn add buryjs
 ```
 
 ```js
-import Bury from "buryjs";
+import Bury from 'buryjs';
 
 Bury.init(options);
 ```
 
-The option object is set as follows by default:
+If not specified, the options will be set as follows:
 
 ```js
 options = {
   configurable: true,
   enumerable: false
-}
+};
+```
+
+You can also use the Bury methods only for a specific type of prototype by specifying an array for 'options.only' as follows:
+
+```js
+Bury.init({
+  only: [Array, String]
+});
 ```
 
 ---
