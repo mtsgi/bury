@@ -1,45 +1,40 @@
-export default class Bury {
-  static init(options = {}) {
-    const TARGETS = {
-      Array: [],
-      String: [],
-      Number: []
+export class Bury {
+  constructor() {
+    type TargetName = 'Array' | 'String' | 'Number';
+    const TARGETS: Record<TargetName, Record<string, Function>> = {
+      Array: Bury.ARRAY_METHODS(),
+      String: Bury.STRING_METHODS(),
+      Number: Bury.NUMBER_METHODS()
     };
-    const PROTOTYPES = {
+    const PROTOTYPES: Record<TargetName, Object> = {
       Array: Array.prototype,
       String: String.prototype,
       Number: Number.prototype
     };
-    if (options.only) {
-      options.only.forEach((target) => {
-        if (target.name) TARGETS[target.name] = Bury.getMethods(target.name);
-      });
-    } else {
-      TARGETS.Array = Bury.getMethods('Array');
-      TARGETS.String = Bury.getMethods('String');
-      TARGETS.Number = Bury.getMethods('Number');
-      if (options.exclude) {
-        options.exclude.forEach((target) => {
-          if (target.name) TARGETS[target.name] = {};
-        });
-      }
-    }
+
     for (const type in TARGETS) {
       for (const method in TARGETS[type]) {
         if (TARGETS[type][method].length === 0) {
-          Object.defineProperty(PROTOTYPES[type], method, {
-            configurable: options.configurable || true,
-            enumerable: options.enumerable || false,
-            get() {
-              return TARGETS[type][method].apply(this);
+          Object.defineProperty(
+            PROTOTYPES[type],
+            method,
+            {
+              configurable: true,
+              enumerable: false,
+              get() {
+                return TARGETS[type][method].apply(this);
+              }
             }
-          });
-        } else PROTOTYPES[type][method] = TARGETS[type][method];
+          );
+        }
+        else {
+          PROTOTYPES[type][method] = TARGETS[type][method];
+        }
       }
     }
   }
 
-  static ARRAY_METHODS() {
+  static ARRAY_METHODS(): Record<string, Function> {
     return {
       first() {
         return this[0];
@@ -56,15 +51,12 @@ export default class Bury {
       sum() {
         return this.reduce((a, b) => Number(a) + Number(b));
       },
-      append(dumArg) {
+      append(_dumArg) {
         this.push(...arguments);
         return this;
       },
-      prepend(dumArg) {
+      prepend(_dumArg) {
         return [...arguments, ...this];
-      },
-      unshift(dumArg) {
-        return this.prepend(...arguments);
       },
       compact() {
         return this.reduce((a, b) => (b ? a.append(b) : a), []);
@@ -126,7 +118,7 @@ export default class Bury {
     };
   }
 
-  static STRING_METHODS() {
+  static STRING_METHODS(): Record<string, Function> {
     return {
       chop() {
         return this.slice(0, -1);
@@ -158,7 +150,7 @@ export default class Bury {
     };
   }
 
-  static NUMBER_METHODS() {
+  static NUMBER_METHODS(): Record<string, Function> {
     return {
       floor() {
         return Math.floor(this);
@@ -194,18 +186,9 @@ export default class Bury {
         for (const i of [...Array(this).keys()]) f.apply(window, [i]);
         return this;
       },
-      clamp(min, max) {
+      clamp(min: number, max: number) {
         return Math.min(Math.max(this, min), max);
       }
     };
-  }
-
-  static getMethods(name) {
-    const METHODS = {
-      Array: Bury.ARRAY_METHODS(),
-      String: Bury.STRING_METHODS(),
-      Number: Bury.NUMBER_METHODS()
-    };
-    return METHODS[name];
   }
 }

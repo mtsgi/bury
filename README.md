@@ -6,7 +6,7 @@
 ![npm](https://img.shields.io/npm/dt/buryjs)
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/mtsgi/bury)
 
-`v0.6`
+`v0.7`
 
 _Ruby-like methods for JavaScript._
 

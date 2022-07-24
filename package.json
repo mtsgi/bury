@@ -1,12 +1,14 @@
 {
   "name": "buryjs",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Ruby-like methods for JavaScript.",
-  "module": "index.js",
-  "main": "index.js",
+  "module": "./dist/bury.es.js",
+  "main": "./dist/bury.es.js",
+  "types": "./types/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix index.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -20,15 +22,8 @@
   "author": "mtsgi",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "prettier": "^2.3.2"
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0"
   },
   "homepage": "https://mtsgi.github.io/bury"
 }
