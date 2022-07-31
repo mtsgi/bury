@@ -1,6 +1,6 @@
 {
   "name": "buryjs",
-  "version": "0.7.0",
+  "version": "0.7.0-alpha",
   "description": "Ruby-like methods for JavaScript.",
   "module": "./dist/bury.es.js",
   "main": "./dist/bury.es.js",

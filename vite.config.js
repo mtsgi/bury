@@ -4,9 +4,10 @@ const { defineConfig } = require("vite");
 module.exports = defineConfig({
   build: {
     lib: {
+      formats: ["es", "cjs", "umd"],
       entry: path.resolve(__dirname, "lib/main.ts"),
       name: "Bury",
-      fileName: (format) => `bury.${format}.js`,
+      fileName: 'bury',
     },
   },
 });
