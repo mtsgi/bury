@@ -2,9 +2,13 @@
   "name": "buryjs",
   "version": "0.7.0-alpha",
   "description": "Ruby-like methods for JavaScript.",
-  "module": "./dist/bury.es.js",
-  "main": "./dist/bury.es.js",
+  "module": "./dist/bury.js",
+  "main": "./dist/bury.js",
   "types": "./types/main.d.ts",
+  "files": [
+    "/dist",
+    "/types"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
