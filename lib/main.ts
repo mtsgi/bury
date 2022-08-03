@@ -1,7 +1,10 @@
+// @ts-nocheck
+
 export class Bury {
   constructor() {
     type TargetName = 'Array' | 'String' | 'Number';
-    const TARGETS: Record<TargetName, Record<string, Function>> = {
+    const TARGETS: TargetName[] = ['Array', 'String', 'Number']
+    const METHODS: Record<TargetName, Record<string, Function>> = {
       Array: Bury.ARRAY_METHODS(),
       String: Bury.STRING_METHODS(),
       Number: Bury.NUMBER_METHODS()
@@ -12,26 +15,29 @@ export class Bury {
       Number: Number.prototype
     };
 
-    for (const type in TARGETS) {
-      for (const method in TARGETS[type]) {
-        if (TARGETS[type][method].length === 0) {
+    TARGETS.forEach((target) => {
+      const methods = METHODS[target];
+
+      for (const method in methods) {
+        if (METHODS[target][method].length === 0) {
           Object.defineProperty(
-            PROTOTYPES[type],
+            PROTOTYPES[target],
             method,
             {
               configurable: true,
               enumerable: false,
               get() {
-                return TARGETS[type][method].apply(this);
+                return METHODS[target][method].apply(this);
               }
             }
           );
         }
         else {
-          PROTOTYPES[type][method] = TARGETS[type][method];
+          // @ts-ignore Add method to prototype
+          PROTOTYPES[target][method] = METHODS[target][method];
         }
       }
-    }
+    });
   }
 
   static ARRAY_METHODS(): Record<string, Function> {
