@@ -11,20 +11,20 @@ declare global {
     prepend(...el: T[]): Array<T>;
     compact: Array<T>;
     uniq: Array<T>;
-    each(f: Function): Array<T>;
-    each_with_index(f: Function): Array<T>;
+    each(f: (value: T) => any): Array<T>;
+    each_with_index(f: (value: T, index: number) => any): Array<T>;
     delete(target: T): Array<T>;
-    delete_if(f: Function): Array<T>;
+    delete_if(f: (value: T) => any): Array<T>;
     delete_at(pos: number): Array<T>;
     clear: [];
     union(other: Array<T>): Array<T>;
     size: number;
     minmax: Array<T>;
-    min_by(f: Function): T;
-    max_by(f: Function): T;
-    find_all(f: Function): Array<T>;
-    select(f: Function): Array<T>;
-    count(f: Function): number;
+    min_by(f: (value: T) => number): T;
+    max_by(f: (value: T) => number): T;
+    find_all(f: (value: T, index: number, array: T[]) => any): Array<T>;
+    select(f: (value: T, index: number, array: T[]) => any): Array<T>;
+    count(f: (value: T, index: number, array: T[]) => any): number;
     rev: Array<T>;
   }
 
@@ -51,7 +51,7 @@ declare global {
     prev_float: number;
     to_s: string;
     inspect: string;
-    times(f: Function): number;
+    times(f: (num: number) => any): number;
     clamp(min: number, max: number): number;
   }
 }
