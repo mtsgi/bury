@@ -11,13 +11,17 @@ class i {
     };
     for (const e in t)
       for (const n in t[e])
-        t[e][n].length === 0 ? Object.defineProperty(r[e], n, {
-          configurable: !0,
-          enumerable: !1,
-          get() {
-            return t[e][n].apply(this);
+        t[e][n].length === 0 ? Object.defineProperty(
+          r[e],
+          n,
+          {
+            configurable: !0,
+            enumerable: !1,
+            get() {
+              return t[e][n].apply(this);
+            }
           }
-        }) : r[e][n] = t[e][n];
+        ) : r[e][n] = t[e][n];
   }
   static ARRAY_METHODS() {
     return {
@@ -46,7 +50,10 @@ class i {
         return this.reduce((t, r) => r ? t.append(r) : t, []);
       },
       uniq() {
-        return this.reduce((t, r) => t.indexOf(r) === -1 ? t.append(r) : t, []);
+        return this.reduce(
+          (t, r) => t.indexOf(r) === -1 ? t.append(r) : t,
+          []
+        );
       },
       each(t) {
         return this.forEach((r) => t(r)), this;
