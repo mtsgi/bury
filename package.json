@@ -23,7 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.4",
-    "vite": "^4.5.12"
+    "vite": "^5.4.20"
   },
   "homepage": "https://mtsgi.github.io/bury"
 }
